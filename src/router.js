@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import BrandDashboard from './views/BrandDashboard.vue';
+import BrandDashboard from './views/BrandDashboard.vue'
+
 Vue.use(Router)
 
 export default new Router({
