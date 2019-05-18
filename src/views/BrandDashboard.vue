@@ -1,10 +1,12 @@
 <template>
-    $END$
+  <BrandDash/>
 </template>
 
 <script>
+  import BrandDash from '../components/BrandDash.vue';
   export default {
-    name: 'BrandDashboard'
+    name: 'BrandDashboard',
+    components: { BrandDash }
   }
 </script>
 
