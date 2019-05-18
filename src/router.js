@@ -14,7 +14,7 @@ export default new Router({
     },
     {
       path: '/brand',
-      name: 'brand',
+      name: 'BrandDashboard',
       component: BrandDashboard
     }
 

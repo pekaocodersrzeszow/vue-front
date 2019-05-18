@@ -17,13 +17,22 @@
     </v-toolbar-items>
       <div class="user-state-container hidden-sm-and-down">
         <v-btn  round class="primary "  >
-            Mapa
+          <v-icon class="menu-icon">
+           fas fa-map-marked-alt
+          </v-icon>
+            Mapa partnerów
         </v-btn>
         <v-btn round  class="primary "  >
-           Branże
+          <v-icon class="menu-icon">
+           fas fa-piggy-bank
+          </v-icon>
+           Twoje rabaty
         </v-btn>
         <v-btn  round class="primary "  >
-           Finanse
+          <v-icon class="menu-icon">
+           fas fa-users
+          </v-icon>
+           Poleć znajomym
         </v-btn>
       </div>
 
@@ -38,25 +47,43 @@
     >
       <div class=" px-5 py-3">
         <router-link class="headline text-xs-center" to="/">
-
-          <h3>Wyszukiwarka Kół Naukowych</h3>
+          <img class="mobile-logo"  src="../assets/logo_desktop.png"/>
         </router-link>
       </div>
       <v-divider></v-divider>
       <v-list class="pa-0">
         <v-list-tile to="/" >
           <v-list-tile-content>
-            <v-list-tile-title>Pulpit</v-list-tile-title>
+            <v-list-tile-title>
+              <v-icon class="menu-icon">
+                fas fa-map-marked-alt
+              </v-icon>
+
+              Mapa partnerów</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-divider> </v-divider>
         <v-list-tile to="/list" >
           <v-list-tile-content>
-            <v-list-tile-title>Wyszukiwarka</v-list-tile-title>
+            <v-list-tile-title>
+              <v-icon class="menu-icon">
+                fas fa-piggy-bank
+              </v-icon>
+              Twoje rabaty</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
          <v-divider> </v-divider>
+        <v-list-tile to="/list" >
+          <v-list-tile-content>
 
+            <v-list-tile-title>
+              <v-icon class="menu-icon">
+                fas fa-users
+              </v-icon> Poleć znajomym
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-divider> </v-divider>
 
 
         </v-list>
@@ -90,7 +117,12 @@ export default {
     -moz-box-shadow: none !important;
     box-shadow:  none !important;
   }
+  .brand h3{
+    width:100%;
+    text-transform: capitalize;
+    text-decoration: none;
 
+  }
 
   .user-state-container{
     margin:auto 0.5rem auto 0.5rem;
@@ -105,6 +137,13 @@ export default {
 
   #drawer a{
     text-decoration: none;
+  }
+  .mobile-logo{
+    width:100%;
+    height: auto;
+  }
+  .menu-icon{
+    margin-right: 0.5rem;
   }
 
 </style>
