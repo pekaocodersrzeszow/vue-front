@@ -94,6 +94,7 @@ export default {
     console.log(this.$store.state.apiToken)
     this.createMap()
     this.myMarker = L.marker([this.myPos.lat, this.myPos.lang]).addTo(this.map);
+    this.fetchPartners()
   }
 }
 </script>
