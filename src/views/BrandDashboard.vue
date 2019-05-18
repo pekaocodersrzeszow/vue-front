@@ -1,5 +1,5 @@
 <template>
-    $END$
+xdd
 </template>
 
 <script>
