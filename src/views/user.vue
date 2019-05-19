@@ -55,7 +55,7 @@ export default {
 
 <style scoped>
 .wrapper{
-  background-image: url("../assets/savings.jpg");
+  background-image: url("~@/assets/savings.jpg");
   background-size: cover;
 }
 </style>

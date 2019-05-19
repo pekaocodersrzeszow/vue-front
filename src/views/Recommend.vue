@@ -58,7 +58,7 @@
 
 <style scoped>
 #container{
-  background-image: url("../assets/login-bg.jpg");
+  background-image: url("~@/assets/login-bg.jpg");
   background-size: cover;
 }
   .card-view{

@@ -14,6 +14,7 @@
               label="Wyszukaj partnera"
               class="mb-2"
               @click:prepend="searchPartners"
+              @keyup.enter.native="searchPartners"
               ></v-text-field>
             <v-btn icon @click="centerMap(myPos.lat,myPos.lang)">
               <v-icon>fas fa-map-marker-alt</v-icon>
@@ -61,29 +62,151 @@ export default {
         lang: 21.983588
       },
       fetchedPartners: [ {
-        id: 1,
+        id: 16,
         name: 'McDonalds',
         discount: 0.1,
         lat: 51,
         long: 19,
-        category: 2
+        category: 20
       },
       {
-        id: 2,
+        id: 17,
         name: 'Lidl',
         discount: 0.15,
         lat: 50.020278,
         long: 21.977706,
-        category: 3
+        category: 22
       },
       {
-        id: 3,
+        id: 18,
         name: 'Kiosk',
         discount: 0.05,
         lat: 50.0196181,
         long: 21.9808197,
+        category: 10
+      },
+
+      {
+        id: 1,
+        name: 'Infoloty.pl - Bilety Lotnicze - Tanie Loty',
+        lat: 50.0359058,
+        long: 21.9992854,
+        discount: 0.1,
+        category: 1
+      },
+      {
+        id: 2,
+        name: 'Merkury Market - Płytki, panele, meble',
+        lat: 50.0362109,
+        long: 21.9983974,
+        discount: 0.15,
         category: 3
+      },
+      {
+        id: 3,
+        name: 'Centrum Budowlane BOZ',
+        lat: 50.0255546,
+        long: 21.9658703,
+        discount: 0.1,
+        category: 3
+      },
+      {
+        id: 4,
+        name: 'Dyskont Odzieżowy TANIA ODZIEŻ',
+        lat: 50.0388387,
+        long: 21.9990234,
+        discount: 0.1,
+        category: 5
+      },
+      {
+        id: 5,
+        name: 'H&M Galeria Rzeszów',
+        lat: 50.0421122,
+        long: 21.9981045,
+        discount: 0.1,
+        category: 5
+      },
+      {
+        id: 6,
+        name: 'Euro-Trade Hurtownia',
+        lat: 50.0266989,
+        long: 21.9769192,
+        discount: 0.1,
+        category: 6
+      },
+      {
+        id: 7,
+        name: 'Kros - Hurtownia bielizny i wyrobów pościelowych',
+        lat: 50.0470151,
+        long: 21.9836473,
+        discount: 0.1,
+        category: 6
+      },
+      {
+        id: 8,
+        name: 'Laserowa Twierdza - Laserowy Paintball',
+        lat: 50.0397949,
+        long: 22.0067523,
+        discount: 0.1,
+        category: 7
+      },
+      {
+        id: 9,
+        name: 'Lychee w dziczy',
+        lat: 50.032237,
+        long: 22.0049226,
+        discount: 0.1,
+        category: 7
+      },
+      {
+        id: 10,
+        name: 'NOTUS Finanse S.A.',
+        lat: 50.0392906,
+        long: 21.9993369,
+        discount: 0.1,
+        category: 8
+      },
+      {
+        id: 11,
+        name: 'Midas Finanse i Ubezpieczenia',
+        lat: 50.0384873,
+        long: 22.0001805,
+        discount: 0.1,
+        category: 8
+      },
+      {
+        id: 12,
+        name: 'Dara Kebab',
+        lat: 50.0376919,
+        long: 22.0032633,
+        discount: 0.1,
+        category: 9
+      },
+      {
+        id: 13,
+        name: "Zapieksy Dave'a",
+        lat: 50.0386843,
+        long: 21.999519,
+        discount: 0.12,
+        category: 9
+      },
+      {
+        id: 14,
+        name: 'Instytut Zdrowia i Urody Twój Styl',
+        lat: 50.0419707,
+        long: 21.9975803,
+        discount: 0.1,
+        category: 10
+      },
+      {
+        id: 15,
+        name: 'Studio urody Piccola Stella',
+        lat: 50.0333669,
+        long: 21.9973865,
+        discount: 0.1,
+        category: 10
       }
+
       ],
       partners: [
 
@@ -96,15 +219,136 @@ export default {
         },
         {
           id: 2,
+          name: 'Bankomaty',
+          icon: 'money-bill'
+        },
+        {
+          id: 3,
+          name: 'Sklepy i usługi budowlane',
+          icon: 'fas fa-toolbox'
+        },
+        {
+          id: 4,
+          name: 'Usługi?',
+          icon: ''
+        },
+        {
+          id: 5,
+          name: 'Odziez',
+          icon: 'fas fa-tshirt'
+        },
+        {
+          id: 6,
+          name: 'Hurtownie',
+          icon: 'fas fa-building'
+        },
+        {
+          id: 7,
+          name: 'Rozrywka',
+          icon: 'fas fa-music'
+        },
+        {
+          id: 8,
+          name: 'Finanse',
+          icon: 'fas fa-hand-holding-usd'
+        },
+        {
+          id: 9,
+          name: 'Lokale gastronomiczne',
+          icon: 'fas fa-pizza-slice'
+        },
+        {
+          id: 10,
+          name: 'Sklepy?',
+          icon: ''
+        },
+        {
+          id: 11,
+          name: 'Zdrowie i uroda',
+          icon: 'fas fa-weight'
+        },
+        {
+          id: 12,
+          name: 'Wyposazenie domu',
+          icon: 'fas fa-home'
+        },
+        {
+          id: 13,
+          name: 'Hotele',
+          icon: 'fas fa-hotel'
+        },
+        {
+          id: 14,
+          name: 'Nie wiem ?',
+          icon: ''
+        },
+        {
+          id: 15,
+          name: 'Motoryzacja',
+          icon: 'fas fa-car'
+        },
+        {
+          id: 16,
+          name: 'Nieprzypisana',
+          icon: 'fas fa-question-circle'
+        },
+        {
+          id: 17,
+          name: 'nie wiem?',
+          icon: ''
+        },
+        {
+          id: 18,
+          name: 'Stacje benzynowe',
+          icon: 'fas fa-gas-pump'
+        },
+        {
+          id: 19,
+          name: 'recuming transa?',
+          icon: ''
+        },
+        {
+          id: 20,
           name: 'Restauracje',
           icon: 'fas fa-utensils'
         },
         {
-          id: 3,
+          id: 21,
+          name: 'Usługi',
+          icon: 'fas fa-wrench'
+        },
+        {
+          id: 22,
           name: 'Supermarkety',
           icon: 'fas fa-shopping-cart'
+        },
+        {
+          id: 23,
+          name: 'Telekomunikacja',
+          icon: 'fas fa-phone'
+        },
+        {
+          id: 24,
+          name: 'Edukacja',
+          icon: 'fas fa-university'
+        },
+        {
+          id: 25,
+          name: 'Podroze',
+          icon: 'fas fa-compass'
+        },
+        {
+          id: 26,
+          name: 'Narzedzia',
+          icon: 'fas fa-tools'
+        },
+        {
+          id: 28,
+          name: 'hurtownie?',
+          icon: ''
         }
       ]
+
     }
   },
   methods: {
@@ -131,7 +375,7 @@ export default {
 
       //  popup.on('click', ()=>{this.$router.push({ name: 'partner', params: { id: partner.id } }) });
       marker.on('click', () => { this.centerMap(partner.lat, partner.long) })
-      marker.on('click', () => { this.map.remove();this.$router.push({ name: 'PartnerView', params: { id: partner.id, partner: partner,  categories: this.categories } }) })
+      marker.on('click', () => { this.map.remove(); this.$router.push({ name: 'PartnerView', params: { id: partner.id, partner: partner, categories: this.categories } }) })
     },
     createPopupData (partner) {
       // $router.push({ name: 'partner', params: { partnerID: 'partner.id' } })
@@ -142,7 +386,11 @@ export default {
     searchPartners () {
       // todo: branzza
 
-      this.partners = this.fetchedPartners.filter(partner => partner.name.toUpperCase().includes(this.searchKey.toUpperCase()))
+      this.partners = this.fetchedPartners.filter(partner => {
+        // return partner.name.toUpperCase().includes(this.searchKey.toUpperCase()) || this.categories[]
+        return true
+      }
+      )
       this.refreshMarkers()
     },
     fetchPartners () {
@@ -162,13 +410,19 @@ export default {
   },
   mounted () {
     this.createMap()
-    const markerIcon = L.icon.glyph({
-      glyphColor: 'white',
-      prefix: 'fa',
-      glyph: 'fa-map-pin'
-
-    })
-    this.myMarker = L.marker([this.myPos.lat, this.myPos.lang], { icon: markerIcon }).addTo(this.map)
+    const circle = L.circle([this.myPos.lat, this.myPos.lang], {
+      color: 'red',
+      fillColor: '#f03',
+      fillOpacity: 0.5,
+      radius: 120
+    }).addTo(this.map)
+    // const markerIcon = L.icon.glyph({
+    //   glyphColor: 'white',
+    //   prefix: 'fa',
+    //   glyph: 'fa-map-pin'
+    //
+    // })
+    // this.myMarker = L.marker([this.myPos.lat, this.myPos.lang], { icon: markerIcon }).addTo(this.map)
     this.fetchPartners()
   }
 }

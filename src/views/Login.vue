@@ -49,7 +49,7 @@ export default {
 
 <style scoped>
 #login-wrapper{
-  background-image: url("../assets/login.jpg");
+  background-image: url("~@/assets/login.jpg");
   -webkit-background-size: cover;
   background-size: cover;
 }

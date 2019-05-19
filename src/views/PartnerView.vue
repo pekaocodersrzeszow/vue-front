@@ -70,7 +70,7 @@
   position: relative;
   width:140px;
   height: 60px;
-  background-image: url("../assets/discount.png");
+  background-image: url("~@/assets/discount.png");
   background-size: contain;
 }
   #discount-wrapper h2{
@@ -88,7 +88,7 @@
     margin:1rem;
   }
   .wrapper{
-    background-image: url("../assets/login-bg.jpg");
+    background-image: url("~@/assets/login-bg.jpg");
     background-size: cover;
   }
 </style>
