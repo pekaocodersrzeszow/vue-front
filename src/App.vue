@@ -3,7 +3,7 @@
 
     <Navbar app/>
     <v-content app>
-      <v-container fluid class="pa-0">
+      <v-container fill-height fluid class="pa-0">
         <router-view></router-view>
       </v-container>
     </v-content>

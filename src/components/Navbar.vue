@@ -15,24 +15,30 @@
 
 
     </v-toolbar-items>
-      <div class="user-state-container hidden-sm-and-down">
-        <v-btn  round class="primary "  >
+      <div class="user-state-container hidden-sm-and-down" v-if="!$route.path.includes('login')">
+        <v-btn  round class="primary "  @click="$router.push({ name: 'home' })">
           <v-icon class="menu-icon">
            fas fa-map-marked-alt
           </v-icon>
             Mapa partnerów
         </v-btn>
-        <v-btn round  class="primary "  >
+        <v-btn round  class="primary "  @click="$router.push({ name: 'discounts' })">
           <v-icon class="menu-icon">
            fas fa-piggy-bank
           </v-icon>
            Twoje rabaty
         </v-btn>
-        <v-btn  round class="primary "  >
+        <v-btn  round class="primary "  @click="$router.push({ name: 'Recommendations' })">
           <v-icon class="menu-icon">
            fas fa-users
           </v-icon>
            Poleć znajomym
+        </v-btn>
+        <v-btn  dark round class="indigo mx-2"  @click="$router.push({ name: 'Login' })">
+          <v-icon class="menu-icon">
+           fas fa-sign-out-alt
+          </v-icon>
+           Wyloguj
         </v-btn>
       </div>
 
@@ -117,11 +123,18 @@ export default {
     -moz-box-shadow: none !important;
     box-shadow:  none !important;
   }
+  .brand{
+    height: 100%;
+    padding: 0.3rem;
+  }
   .brand h3{
-    width:100%;
+
     text-transform: capitalize;
     text-decoration: none;
-
+  }
+  .brand img{
+    height: 100%;
+    width:auto;
   }
 
   .user-state-container{
