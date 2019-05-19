@@ -503,7 +503,7 @@ export default {
       color: 'red',
       fillColor: '#f03',
       fillOpacity: 0.5,
-      radius: 120
+      radius: 45
     }).addTo(this.map)
     // const markerIcon = L.icon.glyph({
     //   glyphColor: 'white',
