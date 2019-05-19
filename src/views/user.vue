@@ -5,7 +5,7 @@
         <v-card class="pa-3 ">
           <v-card-title><h1>Twoje oszczędności</h1></v-card-title>
           <v-divider></v-divider>
-          <v-card class="elevation-5">
+          <v-card class="elevation-5 py-3">
             <v-card-title><h2>Maj</h2></v-card-title>
             <canvas id="chart2" class="chart"></canvas>
           </v-card>
@@ -110,7 +110,7 @@ export default {
   },
   mounted () {
    this.createChart()
-   this.createChart2()
+   setTimeout( ()=>this.createChart2(),1000)
   }
 }
 </script>

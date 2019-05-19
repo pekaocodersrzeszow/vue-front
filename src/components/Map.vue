@@ -27,17 +27,7 @@
       <v-flex xs12 lg3 style="max-height: 90vh;overflow-y: scroll">
         <v-card class="ma-1" >
          <v-card-title><h2 class="text-xs-center">Lista partnerów w Twojej okolicy</h2></v-card-title>
-          <v-select
-            class="ma-2"
-            v-model="value"
-            :items="categories"
-            item-text="name"
-            item-value="id"
-            attach
-            chips
-            label="Kategorie"
-            multiple
-          ></v-select>
+
           <v-list v-if="partners.length>0">
             <v-list-tile v-for="partner in partners" :key="partner.id" @click="centerMap(partner.lat,partner.long,17)">
               <v-list-tile-avatar>
@@ -64,7 +54,7 @@ export default {
   name: 'Map',
   data () {
     return {
-      selectedCat: null,
+      selectedCat: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28],
       map: {},
       searchKey: '',
       markerGroup: {},
