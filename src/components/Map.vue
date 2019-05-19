@@ -24,11 +24,22 @@
         <div id="map"></div>
       </v-flex>
 
-      <v-flex xs12 lg3>
-        <v-card class="ma-1">
+      <v-flex xs12 lg3 style="max-height: 90vh;overflow-y: scroll">
+        <v-card class="ma-1" >
          <v-card-title><h2 class="text-xs-center">Lista partnerów w Twojej okolicy</h2></v-card-title>
+          <v-select
+            class="ma-2"
+            v-model="value"
+            :items="categories"
+            item-text="name"
+            item-value="id"
+            attach
+            chips
+            label="Kategorie"
+            multiple
+          ></v-select>
           <v-list v-if="partners.length>0">
-            <v-list-tile v-for="partner in partners" :key="partner.id" @click="centerMap(partner.lat,partner.long)">
+            <v-list-tile v-for="partner in partners" :key="partner.id" @click="centerMap(partner.lat,partner.long,17)">
               <v-list-tile-avatar>
                 <v-icon>
                   {{categories[partner.category-1].icon}}
@@ -53,13 +64,14 @@ export default {
   name: 'Map',
   data () {
     return {
+      selectedCat: null,
       map: {},
       searchKey: '',
       markerGroup: {},
       myMarker: null,
       myPos: {
-        lat: 50.020526,
-        lang: 21.983588
+        lat: 50.0365036,
+        lang: 21.994452,
       },
       fetchedPartners: [ {
         id: 16,
@@ -77,15 +89,6 @@ export default {
         long: 21.977706,
         category: 22
       },
-      {
-        id: 18,
-        name: 'Kiosk',
-        discount: 0.05,
-        lat: 50.0196181,
-        long: 21.9808197,
-        category: 10
-      },
-
       {
         id: 1,
         name: 'Infoloty.pl - Bilety Lotnicze - Tanie Loty',
@@ -180,7 +183,7 @@ export default {
         lat: 50.0376919,
         long: 22.0032633,
         discount: 0.1,
-        category: 9
+        category: 9,
       },
       {
         id: 13,
@@ -188,7 +191,7 @@ export default {
         lat: 50.0386843,
         long: 21.999519,
         discount: 0.12,
-        category: 9
+        category: 9,
       },
       {
         id: 14,
@@ -205,6 +208,102 @@ export default {
         long: 21.9973865,
         discount: 0.1,
         category: 10
+      },
+      {
+        id: 19,
+        name: 'DUKA',
+        lat: 50.0419271,
+        long: 21.9962154,
+        discount: 0.12,
+        category: 12
+      },
+      {
+        id: 20,
+        name: 'Salon Homla - Wyposażenie wnętrz',
+        lat: 50.0274021,
+        long: 22.009903,
+        discount: 0.1,
+        category: 12
+      },
+      {
+        id: 21,
+        name: 'Hotel Bristol Tradition & Luxury',
+        lat: 50.0382665,
+        long: 22.0023552,
+        discount: 0.1,
+        category: 13
+      },
+      {
+        id: 22,
+        name: 'Hotele Prezydenckie',
+        lat: 50.0284397,
+        long: 22.0089288,
+        discount: 0.1,
+        category: 13
+      },
+      {
+        id: 23,
+        name: "Restauracja McDonald's",
+        lat: 50.0197713,
+        long: 21.9907869,
+        discount: 0.1,
+        category: 20
+      },
+      {
+        id: 24,
+        name: 'Restauracja W ogrodach',
+        lat: 50.0316949,
+        long: 22.0032633,
+        discount: 0.1,
+        category: 20
+      },
+      {
+        id: 25,
+        name: 'LOTOS - Stacja paliw',
+        lat: 50.0290073,
+        long: 21.9741423,
+        discount: 0.1,
+        category: 18
+      },
+      {
+        id: 26,
+        name: 'Shell',
+        lat: 50.0428806,
+        long: 21.9888349,
+        discount: 0.1,
+        category: 18
+      },
+      {
+        id: 27,
+        name: 'Lidl',
+        lat: 50.0233349,
+        long: 21.9943419,
+        discount: 0.1,
+        category: 22
+      },
+      {
+        id: 28,
+        name: 'Bi1',
+        lat: 50.0388415,
+        long: 21.9745269,
+        discount: 0.1,
+        category: 22
+      },
+      {
+        id: 29,
+        name: 'TUI Biuro Podrozy',
+        lat: 50.0273432,
+        long: 22.0135219,
+        discount: 0.1,
+        category: 25
+      },
+      {
+        id: 30,
+        name: 'Wagabunda. Biuro podróży',
+        lat: 50.0426938,
+        long: 22.0047672,
+        discount: 0.1,
+        category: 25
       }
 
       ],
@@ -255,12 +354,12 @@ export default {
         {
           id: 9,
           name: 'Lokale gastronomiczne',
-          icon: 'fas fa-pizza-slice'
+          icon: 'fas fa-cookie'
         },
         {
           id: 10,
           name: 'Sklepy?',
-          icon: ''
+          icon: 'fas fa-shopping-cart'
         },
         {
           id: 11,
@@ -354,7 +453,7 @@ export default {
   methods: {
 
     createMap () {
-      this.map = L.map('map').setView([this.myPos.lat, this.myPos.lang], 13)
+      this.map = L.map('map').setView([this.myPos.lat, this.myPos.lang], 15)
       L.tileLayer(`https://api.mapbox.com/styles/v1/karlos20/cjvtdel6n0p4r1co9sajy9so9/tiles/{z}/{x}/{y}?access_token=${this.$store.state.apiToken}`,
         { attribution: 'Map data &copy;<a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
           maxZoom: 18,
@@ -387,8 +486,8 @@ export default {
       // todo: branzza
 
       this.partners = this.fetchedPartners.filter(partner => {
-        // return partner.name.toUpperCase().includes(this.searchKey.toUpperCase()) || this.categories[]
-        return true
+        return partner.name.toUpperCase().includes(this.searchKey.toUpperCase()) ||
+           this.categories[partner.category - 1].name.toUpperCase().includes(this.searchKey.toUpperCase())
       }
       )
       this.refreshMarkers()
@@ -397,8 +496,8 @@ export default {
       this.partners = this.fetchedPartners
       this.refreshMarkers()
     },
-    centerMap (lat, lang) {
-      this.map.setView([lat, lang], 15)
+    centerMap (lat, lang,size=15) {
+      this.map.setView([lat, lang], size)
     },
     refreshMarkers () {
       this.map.removeLayer(this.markerGroup)

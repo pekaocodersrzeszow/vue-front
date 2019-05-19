@@ -16,7 +16,6 @@
             </v-icon>{{this.$props.categories[this.$props.partner.category-1].name}}</h3>
             <v-card-text class="text-xs-center">
 
-              <span>jakis adres moze?</span>
               <h2 class="my-3">Kupując u tego sprzedawcy zaoszczędziłeś już: <span class="primary--text">{{savings}} PLN</span></h2>
               <div id="discount-wrapper" class="mx-auto">
 
