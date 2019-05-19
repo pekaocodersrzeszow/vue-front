@@ -6,7 +6,7 @@ import Login from './views/Login.vue'
 import Partner from './views/PartnerView.vue'
 import Recommendations from './views/Recommend.vue'
 import Heli from './views/HeliInFIre.vue'
-
+import user from './views/user.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -36,6 +36,11 @@ export default new Router({
       path: '/recommendations',
       name: 'Recommendations',
       component: Recommendations
+    },
+    {
+      path: '/user',
+      name: 'user',
+      component: user
     },
     {
       path: '/helicoperinfire',

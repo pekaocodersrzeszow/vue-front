@@ -22,7 +22,7 @@
           </v-icon>
             Mapa partnerów
         </v-btn>
-        <v-btn round  class="primary "  @click="$router.push({ name: 'discounts' })">
+        <v-btn round  class="primary "  @click="$router.push({ name: 'user' })">
           <v-icon class="menu-icon">
            fas fa-piggy-bank
           </v-icon>

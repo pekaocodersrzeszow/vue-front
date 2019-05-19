@@ -43,7 +43,7 @@
     },
     computed: {
       savings(){
-        return parseFloat(Math.random()/Math.random()).toFixed(2);
+        return parseFloat(8*Math.random()/Math.random()).toFixed(2);
       }
     },
     mounted () {
